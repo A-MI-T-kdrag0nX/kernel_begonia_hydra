@@ -128,7 +128,7 @@ EXPORT_SYMBOL(snd_seq_dump_var_event);
 
 static int seq_copy_in_kernel(void *ptr, void *src, int size)
 {
-	char **bufptr = ptr;
+	char **bufptr = ptr; ##
 
 	memcpy(*bufptr, src, size);
 	*bufptr += size;
