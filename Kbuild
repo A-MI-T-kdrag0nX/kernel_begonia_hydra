@@ -77,6 +77,15 @@ missing-syscalls: scripts/checksyscalls.sh $(offsets-file) FORCE
 # 5) Generate constants for Python GDB integration
 #
 
+config ANDROID_LOW_MEMORY_KILLER_AUTODETECT_OOM_ADJ_VALUES
+	bool "Android Low Memory Killer: detect oom_adj values"
+	depends on ANDROID_LOW_MEMORY_KILLER
+	default y
+	---help---
+	  Detect oom_adj values written to
+	  /sys/module/lowmemorykiller/parameters/adj and convert them
+	  to oom_score_adj values.
+
 extra-$(CONFIG_GDB_SCRIPTS) += build_constants_py
 
 build_constants_py: $(obj)/$(timeconst-file) $(obj)/$(bounds-file)
